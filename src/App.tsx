@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, FormControl, InputLabel, Select } from '@mui/material';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import BlogCardVariants from './examples/blogcards';
+import AthleticFeedPosts from './examples/athleticfeed';
 
 export default function App() {
   const [index, setIndex] = useState(0);
+  const [selected, setSelected] = useState<string>('AthleticFeedPosts')
 
-  const handleNext = () => setIndex((prev) => (prev + 1) % BlogCardVariants.length);
-  const handlePrev = () => setIndex((prev) => (prev - 1 + BlogCardVariants.length) % BlogCardVariants.length);
+  const handleNext = () => setIndex((prev) => (prev + 1) % selected.length);
+  const handlePrev = () => setIndex((prev) => (prev - 1 + selected.length) % selected.length);
+
 
   return (
     <Box
@@ -32,6 +35,17 @@ export default function App() {
         <Typography variant="h4" gutterBottom>
           Blog Card Prototype {index + 1}
         </Typography>
+        {/* <FormControl sx={{ marginBottom: 4, minWidth: 200 }}>
+          <InputLabel id="example-select-label">Choose Example</InputLabel>
+          <Select
+            labelId="example-select-label"
+            value={index}
+            onChange={handleSelect}
+            label="Choose Example"
+          >
+            {['BlogCardVariants', 'AthleticFeedPosts']}
+          </Select>
+        </FormControl> */}
         <Box
           sx={{
             display: 'flex',

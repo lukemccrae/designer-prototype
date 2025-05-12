@@ -7,10 +7,9 @@ import AthleticFeedPosts from './examples/athleticfeed';
 
 export default function App() {
   const [index, setIndex] = useState(0);
-  const [selected, setSelected] = useState<string>('AthleticFeedPosts')
 
-  const handleNext = () => setIndex((prev) => (prev + 1) % selected.length);
-  const handlePrev = () => setIndex((prev) => (prev - 1 + selected.length) % selected.length);
+  const handleNext = () => setIndex((prev) => (prev + 1) % AthleticFeedPosts.length);
+  const handlePrev = () => setIndex((prev) => (prev - 1 + AthleticFeedPosts.length) % AthleticFeedPosts.length);
 
 
   return (
@@ -84,7 +83,7 @@ export default function App() {
               padding: 2,
             }}
           >
-            {BlogCardVariants[index].jsx}
+            {AthleticFeedPosts[index].jsx}
 
             {/* Code Viewer */}
             <Box
@@ -100,7 +99,7 @@ export default function App() {
               }}
             >
               <SyntaxHighlighter language="jsx" style={dracula} wrapLongLines>
-                {BlogCardVariants[index].code}
+                {AthleticFeedPosts[index].code}
               </SyntaxHighlighter>
             </Box>
           </Box>

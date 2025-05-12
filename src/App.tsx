@@ -20,7 +20,7 @@ export default function App() {
       sx={{
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'start',
         minHeight: '100vh', // Full viewport height
         width: '100vw',
         padding: 2,
@@ -32,7 +32,6 @@ export default function App() {
           flexDirection: 'column',
           alignItems: 'center',
           width: '100%',
-          maxWidth: '800px',
         }}
       >
         <Typography variant="h4" gutterBottom>
@@ -42,7 +41,7 @@ export default function App() {
           sx={{
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'center',
+            justifyContent: 'space-between',
             alignItems: 'flex-start',
             gap: 4,
             mt: 4,

@@ -8,7 +8,6 @@ import {
   CardMedia,
   Avatar,
   Typography,
-  Container,
   Stack,
   Divider,
 } from '@mui/material';
@@ -124,30 +123,84 @@ export default function App() {
   const handlePrev = () => setIndex((prev) => (prev - 1 + blogCardVariants.length) % blogCardVariants.length);
 
   return (
-    <Container maxWidth="md" sx={{ mt: 4 }}>
-      <Typography variant="h4" gutterBottom textAlign="center">
-        Blog Card Prototype {index + 1}
-      </Typography>
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 4 }}>
-        {/* Left Column: Previous Button */}
-        <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
-          <Button variant="outlined" onClick={handlePrev}>
-            Previous
-          </Button>
-        </Box>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh', // Full viewport height
+        width: '100vw',
+        padding: 2,
+      }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          maxWidth: '600px',
+          width: '100%',
+        }}
+      >
+        <Typography variant="h4" gutterBottom>
+          Prototype {index + 1}
+        </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            mt: 4,
+            width: '100%',
+          }}
+        >
+          {/* Left Column: Previous Button */}
+          <Box
+            sx={{
+              flex: 1,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Button variant="outlined" onClick={handlePrev}>
+              Previous
+            </Button>
+          </Box>
 
-        {/* Middle Column: Card Design */}
-        <Box sx={{ flex: 2, display: 'flex', justifyContent: 'center' }}>
-          {blogCardVariants[index]}
-        </Box>
+          {/* Middle Column: Card Design */}
+          <Box
+            sx={{
+              flex: 2,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              maxWidth: '800px',
+              maxHeight: '800px',
+              overflow: 'hidden',
+              border: '1px solid #ddd',
+              borderRadius: '8px',
+              padding: 2,
+            }}
+          >
+            {blogCardVariants[index]}
+          </Box>
 
-        {/* Right Column: Next Button */}
-        <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
-          <Button variant="outlined" onClick={handleNext}>
-            Next
-          </Button>
+          {/* Right Column: Next Button */}
+          <Box
+            sx={{
+              flex: 1,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Button variant="outlined" onClick={handleNext}>
+              Next
+            </Button>
+          </Box>
         </Box>
       </Box>
-    </Container>
+    </Box>
   );
 }

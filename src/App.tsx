@@ -6,14 +6,26 @@ import {
 } from '@mui/material';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
-import blogCardVariants, { blogCardCode } from './examples/blogcards';
+import CoffeeMenuVariants from './examples/coffeemenu';
 
 export default function App() {
   const [index, setIndex] = useState(0);
 
-  const handleNext = () => setIndex((prev) => (prev + 1) % blogCardVariants.length);
-  const handlePrev = () => setIndex((prev) => (prev - 1 + blogCardVariants.length) % blogCardVariants.length);
+  const handleNext = () => setIndex((prev) => (prev + 1) % CoffeeMenuVariants.length);
+  const handlePrev = () => setIndex((prev) => (prev - 1 + CoffeeMenuVariants.length) % CoffeeMenuVariants.length);
+
+  const getCodeForCard = (component: React.ReactNode) => {
+    return `
+import React from 'react';
+import { Card, CardContent, Typography, Avatar, Stack, Divider, Button, Box, CardMedia } from '@mui/material';
+
+const Example = () => (
+  ${React.Children.toArray(component).map((child) => child).toString()}
+);
+
+export default Example;
+    `;
+  };
 
   return (
     <Box
@@ -21,7 +33,7 @@ export default function App() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'start',
-        minHeight: '100vh', // Full viewport height
+        minHeight: '100vh',
         width: '100vw',
         padding: 2,
       }}
@@ -35,7 +47,7 @@ export default function App() {
         }}
       >
         <Typography variant="h4" gutterBottom>
-          Prototype {index + 1}
+          Coffee Menu Prototype {index + 1}
         </Typography>
         <Box
           sx={{
@@ -75,7 +87,7 @@ export default function App() {
               padding: 2,
             }}
           >
-            {blogCardVariants[index]}
+            {CoffeeMenuVariants[index]}
 
             {/* Code Viewer */}
             <Box
@@ -90,8 +102,8 @@ export default function App() {
                 backgroundColor: '#282a36',
               }}
             >
-              <SyntaxHighlighter language="javascript" style={dracula} wrapLongLines>
-                {blogCardCode[index]}
+              <SyntaxHighlighter language="jsx" style={dracula} wrapLongLines>
+                {getCodeForCard(CoffeeMenuVariants[index])}
               </SyntaxHighlighter>
             </Box>
           </Box>

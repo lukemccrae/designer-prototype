@@ -2,17 +2,12 @@ import React, { useState } from 'react';
 import {
   Box,
   Button,
-  Card,
-  CardHeader,
-  CardContent,
-  CardMedia,
-  Avatar,
   Typography,
-  Stack,
-  Divider,
 } from '@mui/material';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-import blogCardVariants from './examples/blogcards';
+import blogCardVariants, { blogCardCode } from './examples/blogcards';
 
 export default function App() {
   const [index, setIndex] = useState(0);
@@ -36,8 +31,8 @@ export default function App() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          maxWidth: '600px',
           width: '100%',
+          maxWidth: '800px',
         }}
       >
         <Typography variant="h4" gutterBottom>
@@ -46,8 +41,10 @@ export default function App() {
         <Box
           sx={{
             display: 'flex',
-            alignItems: 'center',
+            flexDirection: 'row',
             justifyContent: 'center',
+            alignItems: 'flex-start',
+            gap: 4,
             mt: 4,
             width: '100%',
           }}
@@ -71,17 +68,33 @@ export default function App() {
             sx={{
               flex: 2,
               display: 'flex',
+              flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
-              maxWidth: '800px',
-              maxHeight: '800px',
+              gap: 2,
               overflow: 'hidden',
-              border: '1px solid #ddd',
-              borderRadius: '8px',
               padding: 2,
             }}
           >
             {blogCardVariants[index]}
+
+            {/* Code Viewer */}
+            <Box
+              sx={{
+                mt: 4,
+                width: '100%',
+                maxHeight: 400,
+                overflowY: 'auto',
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                padding: 2,
+                backgroundColor: '#282a36',
+              }}
+            >
+              <SyntaxHighlighter language="javascript" style={dracula} wrapLongLines>
+                {blogCardCode[index]}
+              </SyntaxHighlighter>
+            </Box>
           </Box>
 
           {/* Right Column: Next Button */}

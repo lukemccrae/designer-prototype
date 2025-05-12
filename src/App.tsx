@@ -124,18 +124,29 @@ export default function App() {
   const handlePrev = () => setIndex((prev) => (prev - 1 + blogCardVariants.length) % blogCardVariants.length);
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 4 }}>
-      <Typography variant="h4" gutterBottom>
+    <Container maxWidth="md" sx={{ mt: 4 }}>
+      <Typography variant="h4" gutterBottom textAlign="center">
         Blog Card Prototype {index + 1}
       </Typography>
-      <Box>{blogCardVariants[index]}</Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
-        <Button variant="outlined" onClick={handlePrev}>
-          Previous
-        </Button>
-        <Button variant="outlined" onClick={handleNext}>
-          Next
-        </Button>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 4 }}>
+        {/* Left Column: Previous Button */}
+        <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+          <Button variant="outlined" onClick={handlePrev}>
+            Previous
+          </Button>
+        </Box>
+
+        {/* Middle Column: Card Design */}
+        <Box sx={{ flex: 2, display: 'flex', justifyContent: 'center' }}>
+          {blogCardVariants[index]}
+        </Box>
+
+        {/* Right Column: Next Button */}
+        <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+          <Button variant="outlined" onClick={handleNext}>
+            Next
+          </Button>
+        </Box>
       </Box>
     </Container>
   );

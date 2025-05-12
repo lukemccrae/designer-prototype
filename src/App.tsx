@@ -1,31 +1,14 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Button,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import CoffeeMenuVariants from './examples/coffeemenu';
+import BlogCardVariants from './examples/blogcards';
 
 export default function App() {
   const [index, setIndex] = useState(0);
 
-  const handleNext = () => setIndex((prev) => (prev + 1) % CoffeeMenuVariants.length);
-  const handlePrev = () => setIndex((prev) => (prev - 1 + CoffeeMenuVariants.length) % CoffeeMenuVariants.length);
-
-  const getCodeForCard = (component: React.ReactNode) => {
-    return `
-import React from 'react';
-import { Card, CardContent, Typography, Avatar, Stack, Divider, Button, Box, CardMedia } from '@mui/material';
-
-const Example = () => (
-  ${React.Children.toArray(component).map((child) => child).toString()}
-);
-
-export default Example;
-    `;
-  };
+  const handleNext = () => setIndex((prev) => (prev + 1) % BlogCardVariants.length);
+  const handlePrev = () => setIndex((prev) => (prev - 1 + BlogCardVariants.length) % BlogCardVariants.length);
 
   return (
     <Box
@@ -47,7 +30,7 @@ export default Example;
         }}
       >
         <Typography variant="h4" gutterBottom>
-          Coffee Menu Prototype {index + 1}
+          Blog Card Prototype {index + 1}
         </Typography>
         <Box
           sx={{
@@ -87,7 +70,7 @@ export default Example;
               padding: 2,
             }}
           >
-            {CoffeeMenuVariants[index]}
+            {BlogCardVariants[index].jsx}
 
             {/* Code Viewer */}
             <Box
@@ -103,7 +86,7 @@ export default Example;
               }}
             >
               <SyntaxHighlighter language="jsx" style={dracula} wrapLongLines>
-                {getCodeForCard(CoffeeMenuVariants[index])}
+                {BlogCardVariants[index].code}
               </SyntaxHighlighter>
             </Box>
           </Box>

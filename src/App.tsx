@@ -5,6 +5,7 @@ import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import BlogCardVariants from './examples/blogcards';
 import AthleticFeedPosts from './examples/athleticfeed';
 import LiveUserCards from './examples/liveprofile';
+import EditUserInfoCards from './examples/userInfoCards';
 
 const exampleSets: Record<string, { jsx: JSX.Element; code: string }[]> = {
   BlogCardVariants,
@@ -93,6 +94,8 @@ export default function App() {
             <MenuItem value="BlogCardVariants">Blog Card Variants</MenuItem>
             <MenuItem value="AthleticFeedPosts">Athletic Feed Posts</MenuItem>
             <MenuItem value="LiveUserCards">Live User Cards</MenuItem>
+            <MenuItem value="EditUserInfoCards">EditUserInfoCards</MenuItem>
+
           </Select>
         </FormControl>
         <Box

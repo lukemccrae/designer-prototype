@@ -9,17 +9,17 @@ import {
   Typography,
   Stack,
   Divider,
-  Button,
 } from '@mui/material';
 
 const BlogCardVariants = [
   {
     jsx: (
-      <Card key="variant1">
+      <Card key="variant1" sx={{ backgroundColor: 'white', color: 'black' }}>
         <CardHeader
           avatar={<Avatar src="https://i.pravatar.cc/40?img=1" />}
           title="Jane Doe"
           subheader="May 12, 2025"
+          subheaderTypographyProps={{ color: 'text.secondary' }}
         />
         <CardContent>
           <Typography variant="h5" gutterBottom>
@@ -32,11 +32,12 @@ const BlogCardVariants = [
       </Card>
     ),
     code: `
-<Card>
+<Card sx={{ backgroundColor: 'white', color: 'black' }}>
   <CardHeader
     avatar={<Avatar src="https://i.pravatar.cc/40?img=1" />}
     title="Jane Doe"
     subheader="May 12, 2025"
+    subheaderTypographyProps={{ color: 'text.secondary' }}
   />
   <CardContent>
     <Typography variant="h5" gutterBottom>
@@ -51,7 +52,7 @@ const BlogCardVariants = [
   },
   {
     jsx: (
-      <Card key="variant2">
+      <Card key="variant2" sx={{ backgroundColor: 'white', color: 'black' }}>
         <CardMedia
           component="img"
           height="180"
@@ -71,7 +72,7 @@ const BlogCardVariants = [
       </Card>
     ),
     code: `
-<Card>
+<Card sx={{ backgroundColor: 'white', color: 'black' }}>
   <CardMedia
     component="img"
     height="180"
@@ -93,7 +94,7 @@ const BlogCardVariants = [
   },
   {
     jsx: (
-      <Card key="variant3" sx={{ display: 'flex', p: 2 }}>
+      <Card key="variant3" sx={{ display: 'flex', backgroundColor: 'white', color: 'black', p: 2 }}>
         <Avatar src="https://i.pravatar.cc/60?img=3" sx={{ width: 60, height: 60, mr: 2 }} />
         <Box>
           <Typography variant="h6">How I Ran My First 100K</Typography>
@@ -107,7 +108,7 @@ const BlogCardVariants = [
       </Card>
     ),
     code: `
-<Card sx={{ display: 'flex', p: 2 }}>
+<Card sx={{ display: 'flex', backgroundColor: 'white', color: 'black', p: 2 }}>
   <Avatar src="https://i.pravatar.cc/60?img=3" sx={{ width: 60, height: 60, mr: 2 }} />
   <Box>
     <Typography variant="h6">How I Ran My First 100K</Typography>
@@ -123,7 +124,7 @@ const BlogCardVariants = [
   },
   {
     jsx: (
-      <Card key="variant4" variant="outlined">
+      <Card key="variant4" variant="outlined" sx={{ backgroundColor: 'white', color: 'black' }}>
         <CardContent>
           <Typography variant="h5">How I Ran My First 100K</Typography>
           <Divider sx={{ my: 1 }} />
@@ -136,14 +137,14 @@ const BlogCardVariants = [
               </Typography>
             </Box>
           </Stack>
-          <Typography variant="body2" mt={2}>
+          <Typography variant="body2" mt={2} color="text.secondary">
             A short reflection on pacing, nutrition, and mindset after running my longest race to date.
           </Typography>
         </CardContent>
       </Card>
     ),
     code: `
-<Card variant="outlined">
+<Card variant="outlined" sx={{ backgroundColor: 'white', color: 'black' }}>
   <CardContent>
     <Typography variant="h5">How I Ran My First 100K</Typography>
     <Divider sx={{ my: 1 }} />
@@ -156,7 +157,7 @@ const BlogCardVariants = [
         </Typography>
       </Box>
     </Stack>
-    <Typography variant="body2" mt={2}>
+    <Typography variant="body2" mt={2} color="text.secondary">
       A short reflection on pacing, nutrition, and mindset after running my longest race to date.
     </Typography>
   </CardContent>
@@ -165,12 +166,12 @@ const BlogCardVariants = [
   },
   {
     jsx: (
-      <Card key="variant5" sx={{ backgroundColor: '#1e1e1e', color: 'white' }}>
+      <Card key="variant5" sx={{ backgroundColor: 'white', color: 'black' }}>
         <CardContent>
           <Typography variant="h6" gutterBottom>
             How I Ran My First 100K
           </Typography>
-          <Typography variant="body2" color="gray">
+          <Typography variant="body2" color="text.secondary">
             Jane Doe · May 12, 2025
           </Typography>
           <Typography variant="body2" mt={1}>
@@ -180,12 +181,12 @@ const BlogCardVariants = [
       </Card>
     ),
     code: `
-<Card sx={{ backgroundColor: '#1e1e1e', color: 'white' }}>
+<Card sx={{ backgroundColor: 'white', color: 'black' }}>
   <CardContent>
     <Typography variant="h6" gutterBottom>
       How I Ran My First 100K
     </Typography>
-    <Typography variant="body2" color="gray">
+    <Typography variant="body2" color="text.secondary">
       Jane Doe · May 12, 2025
     </Typography>
     <Typography variant="body2" mt={1}>
@@ -195,7 +196,6 @@ const BlogCardVariants = [
 </Card>
     `,
   },
-  // Add the remaining 5 cards here in a similar format...
 ];
 
 export default BlogCardVariants;

@@ -14,12 +14,14 @@ const LiveUserCards = [
           textAlign: 'center',
           width: 80,
           gap: 0.5,
+          backgroundColor: 'white',
+          borderRadius: 2,
+          padding: 2,
         }}
       >
         <Badge
           badgeContent="LIVE"
           color="error"
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
           sx={{
             '.MuiBadge-badge': {
               fontSize: 8,
@@ -37,7 +39,7 @@ const LiveUserCards = [
             }}
           />
         </Badge>
-        <Typography variant="caption" noWrap>
+        <Typography variant="caption" color="black" noWrap>
           StreamerOne
         </Typography>
         <Typography variant="caption" color="text.secondary" noWrap>
@@ -46,20 +48,36 @@ const LiveUserCards = [
       </Box>
     ),
     code: `
-<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: 80 }}>
-  <Badge badgeContent="LIVE" color="error" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
+<Box
+  sx={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+    width: 80,
+    gap: 0.5,
+    backgroundColor: 'white',
+    borderRadius: 2,
+    padding: 2,
+  }}
+>
+  <Badge badgeContent="LIVE" color="error">
     <Avatar
       src="https://i.pravatar.cc/80?img=1"
       sx={{ width: 56, height: 56, border: '2px solid #ff0000' }}
     />
   </Badge>
-  <Typography variant="caption" noWrap>StreamerOne</Typography>
-  <Typography variant="caption" color="text.secondary" noWrap>Apex Legends</Typography>
+  <Typography variant="caption" color="black" noWrap>
+    StreamerOne
+  </Typography>
+  <Typography variant="caption" color="text.secondary" noWrap>
+    Apex Legends
+  </Typography>
 </Box>
     `,
   },
 
-  // Variant 2: Horizontal layout with avatar and text side by side
+  // Variant 2: Horizontal layout with avatar, username, and LIVE chip
   {
     jsx: (
       <Box
@@ -68,19 +86,22 @@ const LiveUserCards = [
           display: 'flex',
           alignItems: 'center',
           gap: 1,
-          width: 200,
+          width: 250,
+          backgroundColor: 'white',
+          borderRadius: 2,
+          padding: 2,
         }}
       >
         <Avatar
           src="https://i.pravatar.cc/80?img=2"
           sx={{
-            width: 48,
-            height: 48,
+            width: 56,
+            height: 56,
             border: '2px solid #ff0000',
           }}
         />
         <Box sx={{ flex: 1 }}>
-          <Typography variant="body2" noWrap>
+          <Typography variant="body2" color="black" noWrap>
             GamerGirl123
           </Typography>
           <Typography variant="caption" color="text.secondary" noWrap>
@@ -91,21 +112,35 @@ const LiveUserCards = [
       </Box>
     ),
     code: `
-<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, width: 200 }}>
+<Box
+  sx={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: 1,
+    width: 250,
+    backgroundColor: 'white',
+    borderRadius: 2,
+    padding: 2,
+  }}
+>
   <Avatar
     src="https://i.pravatar.cc/80?img=2"
-    sx={{ width: 48, height: 48, border: '2px solid #ff0000' }}
+    sx={{ width: 56, height: 56, border: '2px solid #ff0000' }}
   />
   <Box sx={{ flex: 1 }}>
-    <Typography variant="body2" noWrap>GamerGirl123</Typography>
-    <Typography variant="caption" color="text.secondary" noWrap>Fortnite</Typography>
+    <Typography variant="body2" color="black" noWrap>
+      GamerGirl123
+    </Typography>
+    <Typography variant="caption" color="text.secondary" noWrap>
+      Fortnite
+    </Typography>
   </Box>
   <Chip label="LIVE" color="error" size="small" />
 </Box>
     `,
   },
 
-  // Variant 3: Circular profile photo with a floating LIVE chip
+  // Variant 3: Circular profile with a floating LIVE chip
   {
     jsx: (
       <Box
@@ -117,6 +152,9 @@ const LiveUserCards = [
           textAlign: 'center',
           width: 80,
           gap: 0.5,
+          backgroundColor: 'white',
+          borderRadius: 2,
+          padding: 2,
         }}
       >
         <Box sx={{ position: 'relative' }}>
@@ -141,7 +179,7 @@ const LiveUserCards = [
             }}
           />
         </Box>
-        <Typography variant="caption" noWrap>
+        <Typography variant="caption" color="black" noWrap>
           ProGamerX
         </Typography>
         <Typography variant="caption" color="text.secondary" noWrap>
@@ -150,7 +188,19 @@ const LiveUserCards = [
       </Box>
     ),
     code: `
-<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: 80 }}>
+<Box
+  sx={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+    width: 80,
+    gap: 0.5,
+    backgroundColor: 'white',
+    borderRadius: 2,
+    padding: 2,
+  }}
+>
   <Box sx={{ position: 'relative' }}>
     <Avatar
       src="https://i.pravatar.cc/80?img=3"
@@ -163,8 +213,12 @@ const LiveUserCards = [
       sx={{ position: 'absolute', top: -4, right: -4, fontSize: 10, height: 16 }}
     />
   </Box>
-  <Typography variant="caption" noWrap>ProGamerX</Typography>
-  <Typography variant="caption" color="text.secondary" noWrap>Call of Duty</Typography>
+  <Typography variant="caption" color="black" noWrap>
+    ProGamerX
+  </Typography>
+  <Typography variant="caption" color="text.secondary" noWrap>
+    Call of Duty
+  </Typography>
 </Box>
     `,
   },
@@ -181,20 +235,20 @@ const LiveUserCards = [
           textAlign: 'center',
           width: 90,
           gap: 0.5,
-          backgroundColor: '#f5f5f5',
+          backgroundColor: '#f9f9f9',
           borderRadius: '8px',
-          p: 1,
+          p: 2,
         }}
       >
         <Avatar
           src="https://i.pravatar.cc/80?img=4"
           sx={{
-            width: 48,
-            height: 48,
+            width: 64,
+            height: 64,
             border: '2px solid #ff0000',
           }}
         />
-        <Typography variant="caption" noWrap>
+        <Typography variant="caption" color="black" noWrap>
           StreamerKing
         </Typography>
         <Typography variant="caption" color="text.secondary" noWrap>
@@ -212,17 +266,21 @@ const LiveUserCards = [
     textAlign: 'center',
     width: 90,
     gap: 0.5,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#f9f9f9',
     borderRadius: '8px',
-    p: 1,
+    p: 2,
   }}
 >
   <Avatar
     src="https://i.pravatar.cc/80?img=4"
-    sx={{ width: 48, height: 48, border: '2px solid #ff0000' }}
+    sx={{ width: 64, height: 64, border: '2px solid #ff0000' }}
   />
-  <Typography variant="caption" noWrap>StreamerKing</Typography>
-  <Typography variant="caption" color="text.secondary" noWrap>League of Legends</Typography>
+  <Typography variant="caption" color="black" noWrap>
+    StreamerKing
+  </Typography>
+  <Typography variant="caption" color="text.secondary" noWrap>
+    League of Legends
+  </Typography>
   <Chip label="LIVE" color="error" size="small" sx={{ fontSize: 10 }} />
 </Box>
     `,
@@ -240,6 +298,9 @@ const LiveUserCards = [
           textAlign: 'center',
           width: 70,
           gap: 0.5,
+          backgroundColor: 'white',
+          borderRadius: 2,
+          padding: 1,
         }}
       >
         <Avatar
@@ -254,7 +315,19 @@ const LiveUserCards = [
       </Box>
     ),
     code: `
-<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: 70, gap: 0.5 }}>
+<Box
+  sx={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+    width: 70,
+    gap: 0.5,
+    backgroundColor: 'white',
+    borderRadius: 2,
+    padding: 1,
+  }}
+>
   <Avatar
     src="https://i.pravatar.cc/80?img=5"
     sx={{ width: 56, height: 56, border: '2px solid #ff0000' }}

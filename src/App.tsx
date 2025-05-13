@@ -6,12 +6,14 @@ import BlogCardVariants from './examples/blogcards';
 import AthleticFeedPosts from './examples/athleticfeed';
 import LiveUserCards from './examples/liveprofile';
 import EditUserInfoCards from './examples/userInfoCards'; // Ensure this is correctly imported
+import ProfileHeaderViews from './examples/profileHeaderViews';
 
 const exampleSets: Record<string, { jsx: JSX.Element; code: string }[]> = {
   BlogCardVariants,
   AthleticFeedPosts,
   LiveUserCards,
-  EditUserInfoCards, // Add this to the object
+  EditUserInfoCards,
+  ProfileHeaderViews
 };
 
 export default function App() {
@@ -95,7 +97,8 @@ export default function App() {
             <MenuItem value="BlogCardVariants">Blog Card Variants</MenuItem>
             <MenuItem value="AthleticFeedPosts">Athletic Feed Posts</MenuItem>
             <MenuItem value="LiveUserCards">Live User Cards</MenuItem>
-            <MenuItem value="EditUserInfoCards">Edit User Info</MenuItem> {/* Ensure this matches */}
+            <MenuItem value="EditUserInfoCards">Edit User Info</MenuItem>
+            <MenuItem value="ProfileHeaderViews">Profile Header Views</MenuItem>
           </Select>
         </FormControl>
         <Box

@@ -1,17 +1,29 @@
-import React, { useState } from 'react';
-import { Box, Button, Typography, FormControl, InputLabel, Select } from '@mui/material';
+import React, { useState, type JSX } from 'react';
+import { Box, Button, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import BlogCardVariants from './examples/blogcards';
 import AthleticFeedPosts from './examples/athleticfeed';
 import LiveUserCards from './examples/liveprofile';
 
+const exampleSets: Record<string, { jsx: JSX.Element; code: string }[]> = {
+  BlogCardVariants,
+  AthleticFeedPosts,
+  LiveUserCards,
+};
+
 export default function App() {
+  const [exampleType, setExampleType] = useState<keyof typeof exampleSets>('BlogCardVariants');
   const [index, setIndex] = useState(0);
 
-  const handleNext = () => setIndex((prev) => (prev + 1) % LiveUserCards.length);
-  const handlePrev = () => setIndex((prev) => (prev - 1 + LiveUserCards.length) % LiveUserCards.length);
+  const currentExamples = exampleSets[exampleType];
 
+  const handleNext = () => setIndex((prev) => (prev + 1) % currentExamples.length);
+  const handlePrev = () => setIndex((prev) => (prev - 1 + currentExamples.length) % currentExamples.length);
+  const handleSelect = (event: { target: { value: React.SetStateAction<string>; }; }) => {
+    setExampleType(event.target.value);
+    setIndex(0); // Reset index to 0 when switching examples
+  };
 
   return (
     <Box
@@ -33,19 +45,21 @@ export default function App() {
         }}
       >
         <Typography variant="h4" gutterBottom>
-          Blog Card Prototype {index + 1}
+          Example Viewer: {exampleType} - Example {index + 1}
         </Typography>
-        {/* <FormControl sx={{ marginBottom: 4, minWidth: 200 }}>
+        <FormControl sx={{ marginBottom: 4, minWidth: 200 }}>
           <InputLabel id="example-select-label">Choose Example</InputLabel>
           <Select
             labelId="example-select-label"
-            value={index}
+            value={exampleType}
             onChange={handleSelect}
             label="Choose Example"
           >
-            {['BlogCardVariants', 'AthleticFeedPosts']}
+            <MenuItem value="BlogCardVariants">Blog Card Variants</MenuItem>
+            <MenuItem value="AthleticFeedPosts">Athletic Feed Posts</MenuItem>
+            <MenuItem value="LiveUserCards">Live User Cards</MenuItem>
           </Select>
-        </FormControl> */}
+        </FormControl>
         <Box
           sx={{
             display: 'flex',
@@ -84,7 +98,7 @@ export default function App() {
               padding: 2,
             }}
           >
-            {LiveUserCards[index].jsx}
+            {currentExamples[index].jsx}
 
             {/* Code Viewer */}
             <Box
@@ -100,7 +114,7 @@ export default function App() {
               }}
             >
               <SyntaxHighlighter language="jsx" style={dracula} wrapLongLines>
-                {LiveUserCards[index].code}
+                {currentExamples[index].code}
               </SyntaxHighlighter>
             </Box>
           </Box>

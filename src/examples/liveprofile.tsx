@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Avatar, Typography, Chip, Badge } from '@mui/material';
 
 const LiveUserCards = [

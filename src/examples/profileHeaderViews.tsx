@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Avatar, Typography, Button, Stack, Chip, Divider } from '@mui/material';
 
 const ProfileHeaderViews = [

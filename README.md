@@ -1,54 +1,121 @@
-# React + TypeScript + Vite
+# Designer Prototype
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Designer Prototype is a React-based prototyping tool that allows designers and developers to view, iterate, and explore various UI component designs. The application utilizes Material-UI (MUI) components for its designs and provides a dynamic way to preview and interact with design examples. The project is also a demonstration of modular and reusable component design.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- **Dynamic Example Viewer**: Navigate through different UI component designs using a dropdown and navigation buttons.
+- **Code Preview**: View the JSX code for each design alongside the live example.
+- **Material-UI Integration**: All designs are built with MUI components for consistency and ease of use.
+- **Responsive Layouts**: Optimized for both desktop and mobile viewing.
+- **Reusable Design Sets**: Modular examples for quick integration into other projects.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Design Sets
+This repository includes multiple sets of design examples, each focusing on a specific UI component type. Current sets include:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. **BlogCardVariants**: A collection of blog card designs featuring avatars, titles, and content summaries.
+2. **AthleticFeedPosts**: Activity feed cards showcasing user activities like running, cycling, or yoga.
+3. **LiveUserCards**: Profile cards with "LIVE" status indicators, perfect for streaming platforms.
+4. **EditUserInfoCards**: Editable user information cards for profile settings.
+5. **ProfileHeaderViews**: Profile header designs with layouts for bios, stats, and actions.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Getting Started
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### Prerequisites
+Ensure you have the following installed on your system:
+- **Node.js** (v14 or above)
+- **npm** or **yarn**
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/lukemccrae/designer-prototype.git
+   cd designer-prototype
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
+
+   The application will be available at `http://localhost:3000`.
+
+---
+
+## Usage
+1. Run the application locally.
+2. Use the dropdown menu at the top to select a design set (e.g., Blog Card Variants, Athletic Feed Posts).
+3. Navigate through the examples using the **Previous** and **Next** buttons.
+4. View the live example and its JSX code side by side.
+
+---
+
+## Code Structure
+
+### Key Files and Directories:
+- **`src/App.tsx`**: The main application file. It handles the example navigation and rendering logic.
+- **`src/examples/`**: Contains the design sets. Each file exports an array of examples with JSX and code.
+  - `blogcards.tsx`
+  - `athleticfeed.tsx`
+  - `liveprofile.tsx`
+  - `profileHeaderViews.tsx`
+  - `userInfoCards.tsx`
+- **`src/instructions/semantic-guidelines.md`**: Semantic guidelines for generating new design examples.
+
+---
+
+## Adding New Design Sets
+To add a new set of examples:
+1. Create a new file in the `src/examples/` directory (e.g., `newExamples.tsx`).
+2. Follow the existing format of exporting an array of examples with `jsx` and `code` fields.
+3. Add the new set to the `exampleSets` object in `App.tsx`.
+
+---
+
+## Contribution Guidelines
+Contributions are welcome! If you'd like to enhance the project, please follow these steps:
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/new-example
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add new design example"
+   ```
+4. Push to your branch:
+   ```bash
+   git push origin feature/new-example
+   ```
+5. Open a pull request.
+
+---
+
+## License
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## Acknowledgments
+- [Material-UI](https://mui.com/) for the component library.
+- [Prism Syntax Highlighter](https://prismjs.com/) for the code preview styling.
+
+---
+
+## Author
+**Luke McCrae**  
+GitHub: [lukemccrae](https://github.com/lukemccrae)

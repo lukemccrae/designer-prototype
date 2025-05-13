@@ -47,6 +47,7 @@ export default function App() {
           flexDirection: 'column',
           alignItems: 'center',
           width: '100%',
+          maxWidth: '600px', // Constrain width for better mobile responsiveness
         }}
       >
         <Typography variant="h4" gutterBottom>
@@ -54,7 +55,7 @@ export default function App() {
         </Typography>
         <FormControl
           sx={{
-            marginBottom: 4,
+            marginBottom: 2,
             minWidth: 200,
             backgroundColor: 'white', // Light background for the dropdown
             borderRadius: '4px',
@@ -101,77 +102,55 @@ export default function App() {
             <MenuItem value="ProfileHeaderViews">Profile Header Views</MenuItem>
           </Select>
         </FormControl>
+
+        {/* Buttons Row */}
         <Box
           sx={{
             display: 'flex',
-            flexDirection: 'row',
             justifyContent: 'space-between',
-            alignItems: 'flex-start',
-            gap: 4,
-            mt: 4,
+            width: '100%',
+            marginBottom: 2, // Add spacing between buttons and demo example
+          }}
+        >
+          <Button variant="outlined" onClick={handlePrev} sx={{ flex: 1, marginRight: 1 }}>
+            Previous
+          </Button>
+          <Button variant="outlined" onClick={handleNext} sx={{ flex: 1, marginLeft: 1 }}>
+            Next
+          </Button>
+        </Box>
+
+        {/* Demo Example */}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 2,
+            overflow: 'hidden',
+            padding: 2,
             width: '100%',
           }}
         >
-          {/* Left Column: Previous Button */}
-          <Box
-            sx={{
-              flex: 1,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Button variant="outlined" onClick={handlePrev}>
-              Previous
-            </Button>
-          </Box>
+          {currentExamples[index]?.jsx}
 
-          {/* Middle Column: Card Design */}
+          {/* Code Viewer */}
           <Box
             sx={{
-              flex: 2,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: 2,
-              overflow: 'hidden',
+              mt: 2,
+              width: '100%',
+              maxHeight: 400,
+              overflowY: 'auto',
+              border: '1px solid #ddd',
+              borderRadius: '8px',
               padding: 2,
+              backgroundColor: '#282a36',
             }}
           >
-            {currentExamples[index]?.jsx}
-
-            {/* Code Viewer */}
-            <Box
-              sx={{
-                mt: 4,
-                width: '100%',
-                maxHeight: 400,
-                overflowY: 'auto',
-                border: '1px solid #ddd',
-                borderRadius: '8px',
-                padding: 2,
-                backgroundColor: '#282a36',
-              }}
-            >
-              <SyntaxHighlighter language="jsx" style={dracula} wrapLongLines>
-                {currentExamples[index]?.code || ''}
-              </SyntaxHighlighter>
-            </Box>
-          </Box>
-
-          {/* Right Column: Next Button */}
-          <Box
-            sx={{
-              flex: 1,
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Button variant="outlined" onClick={handleNext}>
-              Next
-            </Button>
+            <SyntaxHighlighter language="jsx" style={dracula} wrapLongLines>
+              {currentExamples[index]?.code || ''}
+            </SyntaxHighlighter>
           </Box>
         </Box>
       </Box>

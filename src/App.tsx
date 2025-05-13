@@ -34,6 +34,7 @@ export default function App() {
         minHeight: '100vh',
         width: '100vw',
         padding: 2,
+        backgroundColor: ' #1e1e2f', // Light background for the app
       }}
     >
       <Box
@@ -47,13 +48,47 @@ export default function App() {
         <Typography variant="h4" gutterBottom>
           Example Viewer: {exampleType} - Example {index + 1}
         </Typography>
-        <FormControl sx={{ marginBottom: 4, minWidth: 200 }}>
-          <InputLabel id="example-select-label">Choose Example</InputLabel>
+        <FormControl
+          sx={{
+            marginBottom: 4,
+            minWidth: 200,
+            backgroundColor: 'white', // Light background for the dropdown
+            borderRadius: '4px',
+          }}
+        >
+          <InputLabel
+            id="example-select-label"
+            sx={{
+              backgroundColor: 'white', // Matches dropdown
+              padding: '0 4px',
+              color: 'black', // Dark text for contrast
+            }}
+          >
+            Choose Example
+          </InputLabel>
           <Select
             labelId="example-select-label"
             value={exampleType}
             onChange={handleSelect}
             label="Choose Example"
+            sx={{
+              backgroundColor: 'white',
+              color: 'black', // Text color
+              '.MuiSvgIcon-root': {
+                color: 'black', // Arrow icon color
+              },
+              '&:hover': {
+                backgroundColor: '#f0f0f0', // Hover effect
+              },
+            }}
+            MenuProps={{
+              PaperProps: {
+                sx: {
+                  backgroundColor: 'white', // Background for dropdown menu
+                  color: 'black', // Text color for menu items
+                },
+              },
+            }}
           >
             <MenuItem value="BlogCardVariants">Blog Card Variants</MenuItem>
             <MenuItem value="AthleticFeedPosts">Athletic Feed Posts</MenuItem>

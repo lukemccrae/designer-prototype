@@ -5,24 +5,25 @@ import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import BlogCardVariants from './examples/blogcards';
 import AthleticFeedPosts from './examples/athleticfeed';
 import LiveUserCards from './examples/liveprofile';
-import EditUserInfoCards from './examples/userInfoCards';
+import EditUserInfoCards from './examples/userInfoCards'; // Ensure this is correctly imported
 
 const exampleSets: Record<string, { jsx: JSX.Element; code: string }[]> = {
   BlogCardVariants,
   AthleticFeedPosts,
   LiveUserCards,
+  EditUserInfoCards, // Add this to the object
 };
 
 export default function App() {
   const [exampleType, setExampleType] = useState<keyof typeof exampleSets>('BlogCardVariants');
   const [index, setIndex] = useState(0);
 
-  const currentExamples = exampleSets[exampleType];
+  const currentExamples = exampleSets[exampleType]; // Make sure `exampleType` matches a key in `exampleSets`
 
   const handleNext = () => setIndex((prev) => (prev + 1) % currentExamples.length);
   const handlePrev = () => setIndex((prev) => (prev - 1 + currentExamples.length) % currentExamples.length);
   const handleSelect = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-    setExampleType(event.target.value);
+    setExampleType(event.target.value as keyof typeof exampleSets);
     setIndex(0); // Reset index to 0 when switching examples
   };
 
@@ -35,7 +36,7 @@ export default function App() {
         minHeight: '100vh',
         width: '100vw',
         padding: 2,
-        backgroundColor: ' #1e1e2f', // Light background for the app
+        backgroundColor: '#1e1e2f', // Light background for the app
       }}
     >
       <Box
@@ -94,8 +95,7 @@ export default function App() {
             <MenuItem value="BlogCardVariants">Blog Card Variants</MenuItem>
             <MenuItem value="AthleticFeedPosts">Athletic Feed Posts</MenuItem>
             <MenuItem value="LiveUserCards">Live User Cards</MenuItem>
-            <MenuItem value="EditUserInfoCards">EditUserInfoCards</MenuItem>
-
+            <MenuItem value="EditUserInfoCards">Edit User Info</MenuItem> {/* Ensure this matches */}
           </Select>
         </FormControl>
         <Box
@@ -136,7 +136,7 @@ export default function App() {
               padding: 2,
             }}
           >
-            {currentExamples[index].jsx}
+            {currentExamples[index]?.jsx}
 
             {/* Code Viewer */}
             <Box
@@ -152,7 +152,7 @@ export default function App() {
               }}
             >
               <SyntaxHighlighter language="jsx" style={dracula} wrapLongLines>
-                {currentExamples[index].code}
+                {currentExamples[index]?.code || ''}
               </SyntaxHighlighter>
             </Box>
           </Box>

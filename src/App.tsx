@@ -4,12 +4,13 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import BlogCardVariants from './examples/blogcards';
 import AthleticFeedPosts from './examples/athleticfeed';
+import LiveUserCards from './examples/liveprofile';
 
 export default function App() {
   const [index, setIndex] = useState(0);
 
-  const handleNext = () => setIndex((prev) => (prev + 1) % AthleticFeedPosts.length);
-  const handlePrev = () => setIndex((prev) => (prev - 1 + AthleticFeedPosts.length) % AthleticFeedPosts.length);
+  const handleNext = () => setIndex((prev) => (prev + 1) % LiveUserCards.length);
+  const handlePrev = () => setIndex((prev) => (prev - 1 + LiveUserCards.length) % LiveUserCards.length);
 
 
   return (
@@ -83,7 +84,7 @@ export default function App() {
               padding: 2,
             }}
           >
-            {AthleticFeedPosts[index].jsx}
+            {LiveUserCards[index].jsx}
 
             {/* Code Viewer */}
             <Box
@@ -99,7 +100,7 @@ export default function App() {
               }}
             >
               <SyntaxHighlighter language="jsx" style={dracula} wrapLongLines>
-                {AthleticFeedPosts[index].code}
+                {LiveUserCards[index].code}
               </SyntaxHighlighter>
             </Box>
           </Box>
